@@ -561,8 +561,8 @@ class SliderComponent extends HTMLElement {
     this.pageTotal.textContent = this.totalPages;
   }
 
-  scrollIntoView(element) {
-    const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - 10;
+  scrollIntoView(element, offset = 0) {
+    const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - offset;
     const isSlideVisible = element.offsetLeft < lastVisibleSlide && element.offsetLeft > this.slider.scrollLeft;
     if (!isSlideVisible) this.slider.scrollTo({ left: element.offsetLeft });
   }

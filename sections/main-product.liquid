@@ -105,12 +105,9 @@
               {%- for media in product.media -%}
                 {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
                   {%- capture media_index -%}
-                    {%- if media.media_type == 'model' -%}
-                    {%- increment model_index -%}
-                    {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
-                    {%- increment video_index -%}
-                    {%- elsif media.media_type == 'image'%}
-                    {%- increment image_index -%}
+                    {%- if media.media_type == 'model' -%}{%- increment model_index -%}
+                    {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{%- increment video_index -%}
+                    {%- elsif media.media_type == 'image'%}{%- increment image_index -%}
                     {%- endif -%}
                   {%- endcapture -%}
                   {%- assign media_index = media_index | plus: 1 -%}
@@ -591,7 +588,7 @@
 
       this.elements.thumbnails.querySelectorAll('button').forEach((element) => element.removeAttribute('aria-current'));
       thumbnail.querySelector('button').setAttribute('aria-current', true);
-      this.elements.thumbnails.scrollIntoView(thumbnail);
+      this.elements.thumbnails.scrollIntoView(thumbnail, 10);
     }
 
     announceLiveRegion(activeItem, position) {
