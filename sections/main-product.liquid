@@ -604,10 +604,14 @@
       const image = activeItem.querySelector('.product__modal-opener--image img');
       if (!image) return;
       image.onload = () => {
+        this.elements.liveRegion.setAttribute('aria-hidden', false);
         this.elements.liveRegion.innerHTML = window.accessibilityStrings.imageAvailable.replace(
           '[index]',
           position
         );
+        setTimeout(() => {
+          this.elements.liveRegion.setAttribute('aria-hidden', true);
+        }, 2000);
       };
       image.src = image.src;
     }
