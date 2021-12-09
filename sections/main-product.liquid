@@ -619,7 +619,7 @@
     playActiveMedia(activeItem) {
       window.pauseAllMedia();
       const deferredMedia = activeItem.querySelector('.deferred-media');
-      if (deferredMedia) deferredMedia.loadContent();
+      if (deferredMedia) deferredMedia.loadContent(false);
     }
 
     preventStickyHeader() {
